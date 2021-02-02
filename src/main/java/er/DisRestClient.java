@@ -12,17 +12,17 @@ import java.io.*;
 import java.util.Properties;
 
 /**
- * DGW is a gateway between sql base and intraservice tasktracker.
+ * DisRestClient is a gateway between sql base and intraservice tasktracker.
  * SQL base located on "DESIGO" server(default ip: 10.3.0.2)
- * DGW contains some parameters which may be changed from commandline.
- * To know list of all parameters type in cmd: "java -jar [path of DGW.jar] -h" .
- * DGW reading alarm list from sql base, filtrating it and create tasks in intraservice.
+ * DisRestClient contains some parameters which may be changed from commandline.
+ * To know list of all parameters type in cmd: "java -jar [path of DisRestClient.jar] -h" .
+ * DisRestClient reading alarm list from sql base, filtrating it and create tasks in intraservice.
  * To change parameters just call in cmd program with new arguments, old parameters will be replaced.
  * Program create log file in the same directory and write errors and info message to it.
  * When program using first time - need to call with all login and passwords(from sql base and intraservice).
  */
-public class DGW {
-    private static final Logger logger = LoggerFactory.getLogger(DGW.class);
+public class DisRestClient {
+    private static final Logger logger = LoggerFactory.getLogger(DisRestClient.class);
 
     public static void main(String[] args) {
 

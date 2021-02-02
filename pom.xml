@@ -66,11 +66,11 @@
         <plugin>
           <artifactId>maven-assembly-plugin</artifactId>
           <configuration>
-            <finalName>DGW</finalName>
+            <finalName>DisRestClient</finalName>
             <appendAssemblyId>false</appendAssemblyId>
             <archive>
               <manifest>
-                <mainClass>er.DGW</mainClass>
+                <mainClass>er.DisRestClient</mainClass>
               </manifest>
             </archive>
             <descriptorRefs>

@@ -8,7 +8,9 @@ import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -27,6 +29,7 @@ class TaskTrackerService {
 
     public TaskTrackerService(PGProperties properties) {
         this.properties = properties;
+        HttpsURLConnection.setDefaultHostnameVerifier(new NullHostnameVerifier());
     }
 
     /**
@@ -76,6 +79,11 @@ class TaskTrackerService {
         return null;
     }
 
+    private static class NullHostnameVerifier implements HostnameVerifier {
+        public boolean verify(String hostname, SSLSession session) {
+            return true;
+        }
+    }
 
     public Map<Integer, Long> readOpenedTasks() {
         String WebURL = properties.getIntraURL() + "task?serviceid=53&tasktypeid=1028&pagesize=1000&StatusIds=27,31";
@@ -233,7 +241,7 @@ class TaskTrackerService {
         if (con != null) {
             try {
                 int status = con.getResponseCode();
-                if (status == HttpURLConnection.HTTP_OK) {
+                if (status == HttpsURLConnection.HTTP_OK) {
                     BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
                     String inputLine;
                     StringBuilder content = new StringBuilder();

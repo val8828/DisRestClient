@@ -26,13 +26,13 @@ class PGProperties {
 
 
     PGProperties() {
-        userPrefs = Preferences.userRoot().node("dgw");
+        userPrefs = Preferences.userRoot().node("dgw2");
         baseURL = userPrefs.get("base_url", "jdbc:sqlserver://10.3.0.2\\DESIGO;DatabaseName=DIV23!PRJ=EXPO!DB=ISHTALM");
         baseUser = userPrefs.get("base_user", null);
         basePassword = userPrefs.get("base_password", null);
         baseExchangeTime = userPrefs.getInt("base_exchange_time", 10000);
 
-        intraURL = userPrefs.get("intra_url", "https://intraservice.exporesource.ru/api/");
+        intraURL = userPrefs.get("intra_url", "https://10.2.0.95/api/");
         intraUser = userPrefs.get("intra_user", null);
         intraPassword = userPrefs.get("intra_password", null);
         intraExchangeTime = userPrefs.getInt("intra_exchange_time", 10000);
